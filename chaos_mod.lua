@@ -1,19 +1,86 @@
+local maps = {1,2,3,4,5,6,7,8,9,10,11,12,1810386,1864223,1729924,2372033,1700658,1484328,2706423,7838502,7860080,4818369,7722607,7800030,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7800025}
+local currentMap
+local playersAlive
+
+function main()
+  tfm.exec.disableAutoNewGame(false)
+  startGame()
+end
+
+function startGame()
+  local newMap
+  repeat
+    newMap = math.random(#maps)
+  until newMap ~= currentMap
+  currentMap = newMap
+  tfm.exec.newGame(maps[newMap])
+end
+
+function endGame()
+  startGame()
+end
+
+function eventNewGame()
+  playersAlive = 0
+  for _ in pairs(tfm.get.room.playerList) do
+    playersAlive = playersAlive + 1
+  end
+end
+
+function eventPlayerRespawn(name)
+  playersAlive = playersAlive + 1
+end
+
+function eventPlayerDied(name)
+  playersAlive = playersAlive - 1
+  checkPlayers()
+end
+
+function eventPlayerWon(name)
+  playersAlive = playersAlive - 1
+  checkPlayers()
+end
+
+function checkPlayers()
+  if playersAlive == 0 then
+    endGame()
+  end
+end
+
+function eventLoop(t, tr)
+  if tr <= 0 then
+    endGame()
+  end
+end
+
+main()
+
 local currTime = 0
-local cronometro = 20
+local cronometro = 10
 eventLoop = function()
   currTime = currTime + .5
   cronometro = cronometro - 1
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323)
 
-if currTime == 10 then
+if currTime == 5 then
 
-cronometro = 20
+cronometro = 10
 currTime = 0
+
+for name,player in pairs(tfm.get.room.playerList) do
+tfm.exec.freezePlayer(name, false)
+end
+
+function eventNewGame ()
+  for name,player in pairs(tfm.get.room.playerList) do
+  tfm.exec.giveTransformations(name, false)
+end
+end
 
 math.randomseed(os.time())
 
-random = math.random(34)
+random = math.random(39)
 
 if random == 1 then
 
@@ -53,15 +120,11 @@ if random == 4 then
 
 ui.addTextArea(1,"Nombres coloridos",nil,50,50,0,0,0x522546,0xe23e57)
 function randomColor()
-return "0x" .. string.format("%X", math.random(0x000000, 0xFFFFFF))
+    return "0x" .. string.format("%X", math.random(0x000000, 0xFFFFFF))
 end
 
-function eventLoop (currentTime, timeRemaining)
-for i=1,100 do
-for p,_ in pairs(tfm.get.room.playerList) do
-tfm.exec.setNameColor(p, randomColor());
-end
-end
+for name,player in pairs(tfm.get.room.playerList) do
+tfm.exec.setNameColor(name, randomColor());
 end
 end
 
@@ -282,8 +345,8 @@ if random == 32 then
 
 ui.addTextArea(1,"Objeto al azar",nil,50,50,0,0,0x000000,0x215b63)
 randomObj = math.random(2837)
-randomX = math.random(-100, 700)
-randomY = math.random(-20, 60)
+randomX = math.random(50, 700)
+randomY = math.random(50, 80)
 tfm.exec.addShamanObject (randomObj, randomX, randomY, 0, 0, 0)
 end
 
@@ -301,6 +364,48 @@ if random == 34 then
 ui.addTextArea(1,"Viento y gravedad normal",nil,50,50,0,0,0x000000, 0x222831)
 tfm.exec.setWorldGravity (0, 10)
 end
+
+if random == 35 then
+
+ui.addTextArea(1,"Particulas al azar",nil,50,50,0,0,0x000000, 0x222831)
+for name,player in pairs(tfm.get.room.playerList) do
+Xcoord = tfm.get.room.playerList[name].x
+Ycoord = tfm.get.room.playerList[name].y
+randomParticula = math.random(44)
+tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord)
+end
+end
+
+if random == 36 then
+
+ui.addTextArea(1,"Congelar a todos",nil,50,50,0,0,0x000000,0x215b63)
+for name,player in pairs(tfm.get.room.playerList) do
+Xcoord = tfm.get.room.playerList[name].x
+Ycoord = tfm.get.room.playerList[name].y
+tfm.exec.killPlayer(name)
+tfm.exec.addShamanObject (54, Xcoord, Ycoord, 0, 0, 0)
+end
+end
+
+if random == 37 then
+
+ui.addTextArea(1,"Nuevo mapa",nil,50,50,0,0,0x000000,0x215b63)
+tfm.exec.newGame()
+end
+
+
+if random == 38 then
+
+ui.addTextArea(1,"CAJA",nil,50,50,0,0,0x335d2d,0x7ea04d)
+tfm.exec.addShamanObject (2, 50, 50, 0, 0, 0)
+end
+
+if random == 39 then
+
+ui.addTextArea(1,"Gravedad baja",nil,50,50,0,0,0x335d2d,0x7ea04d)
+tfm.exec.setWorldGravity (0, 4)
+end
+
 
 end
 end
