@@ -1,3 +1,3 @@
-# chaos-mod-transformice
+# chaos-mod(ule)-transformice
 
 no lo roben
