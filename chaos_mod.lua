@@ -1,4 +1,4 @@
-local maps = {1,2,3,4,5,6,7,8,9,10,11,12,88,3098930,5082028,1810386,1864223,1263900,1729924,2372033,1700658,1484328,2706423,7838502,7860080,4818369,7722607,7800030,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7800025}
+local maps = {1,2,3,4,5,6,7,8,9,10,11,12,88,3098930,5082028,1810386,1864223,1263900,1729924,2372033,1700658,1484328,2706423,7838502,7860080,4818369,7722607,7800030,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7800025,7840446,6476975}
 local currentMap
 local playersAlive
 
@@ -62,31 +62,35 @@ end
 main()
 
 local currTime = 0
-local cronometro = 10
+local agua = 10
+local cronometro = agua*2
 eventLoop = function()
   currTime = currTime + .5
   cronometro = cronometro - 1
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323)
 
-if currTime == 5 then
+if currTime == agua then
 
-cronometro = 10
+cronometro = agua*2
 currTime = 0
-
-for name,player in pairs(tfm.get.room.playerList) do
-tfm.exec.freezePlayer(name, false)
-end
 
 function eventNewGame ()
   for name,player in pairs(tfm.get.room.playerList) do
   tfm.exec.giveTransformations(name, false)
 end
+
+if congelado == 1 then
+	for name,player in pairs(tfm.get.room.playerList) do
+	tfm.exec.freezePlayer(name, false)
+	congelado = 0
+	end
+end
 end
 
 math.randomseed(os.time())
 
-random = math.random(42)
+random = math.random(45)
 
 if random == 1 then
 
@@ -187,6 +191,7 @@ if random == 11 then
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.freezePlayer(name)
   end
+	 local congelado = 1
 end
 
 if random == 12 then
@@ -436,6 +441,26 @@ if random == 42 then
 
   ui.addTextArea(1,"CAJA",nil,50,50,0,0,0x335d2d,0x7ea04d)
   tfm.exec.addShamanObject (2, 50, 50, 0, 0, 0)
+end
+
+if random == 43 then
+
+	ui.addTextArea(1,"Explosion",nil,50,50,0,0,0xb36b00, 0xffb366)
+ tfm.exec.explosion (50, 50, 10000, 10000, false)
+end
+
+if random == 44 then
+
+	ui.addTextArea(1,"Objeto",nil,50,50,0,0,0xb36b00, 0xffb366)
+	tfm.exec.addPhysicObject ( 2, 50, 50,table)
+end
+
+if random == 45 then
+
+  ui.addTextArea(1,"Tiempo extra",nil,50,50,0,0,0x000000,0xffffff)
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.setGameTime(300, true)
+  end
 end
 
 end
