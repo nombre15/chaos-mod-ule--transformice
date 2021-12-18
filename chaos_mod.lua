@@ -99,11 +99,10 @@ random = math.random(45)
 
 if random == 1 then
 
-	ui.addTextArea(1,"Congelar a todos",nil,50,50,0,0,0x2940d3,0x39a9cb)
-	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.freezePlayer(name, false)
-		congelado = 0
-		end
+ ui.addTextArea(1,"Todos son vampiros",nil,50,50,0,0,0x2940d3,0x39a9cb)
+   for name,player in pairs(tfm.get.room.playerList) do
+	tfm.exec.setVampirePlayer ( name, true)
+   end
 end
 
 if random == 2 then
