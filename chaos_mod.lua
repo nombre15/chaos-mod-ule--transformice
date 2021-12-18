@@ -208,7 +208,6 @@ if random == 12 then
   end
 end
 
-
 if random == 13 then
 
   ui.addTextArea(1,"Ratones enormes",nil,50,50,0,0,0x000000,0xf2910a)
@@ -216,7 +215,6 @@ if random == 13 then
     tfm.exec.changePlayerSize(name, 5)
   end
 end
-
 
 if random == 14 then
 
@@ -273,7 +271,6 @@ if random == 20 then
   tfm.exec.setWorldGravity (0, 0)
 end
 
-
 if random == 21 then
 
   ui.addTextArea(1,"Gravedad fuerte",nil,50,50,0,0,0x212121,0xeeeeee)
@@ -285,7 +282,6 @@ if random == 22 then
   ui.addTextArea(1,"Gravedad baja",nil,50,50,0,0,0x335d2d,0x7ea04d)
   tfm.exec.setWorldGravity (0, 4)
 end
-
 
 if random == 23 then
 
@@ -299,7 +295,6 @@ if random == 24 then
   ui.addTextArea(1,"Viento suave",nil,50,50,0,0,0x0779e4,0x4cbbb9)
   tfm.exec.setWorldGravity (10, 10)
 end
-
 
 if random == 25 then
 
@@ -342,7 +337,6 @@ if random == 29 then
   end
 end
 
-
 if random == 30 then
 
   ui.addTextArea(1,"Zzzzzz",nil,50,50,0,0,0x625757,0xbcbab8)
@@ -350,7 +344,6 @@ if random == 30 then
     tfm.exec.playEmote (name, 6)
   end
 end
-
 
 if random == 31 then
 
@@ -441,7 +434,6 @@ if random == 41 then
   ui.addTextArea(1,"Nuevo mapa",nil,50,50,0,0,0x000000,0x215b63)
   tfm.exec.newGame()
 end
-
 
 if random == 42 then
 
