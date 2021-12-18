@@ -1,3 +1,4 @@
+--****MAPAS****--
 local maps = {1,2,3,4,5,6,7,8,9,10,11,12,88,3098930,5082028,1810386,1864223,1263900,1729924,2372033,1700658,1484328,2706423,7838502,7860080,4818369,7722607,7800030,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573}
 local currentMap
 local playersAlive
@@ -59,6 +60,8 @@ function eventLoop(t, tr)
   end
 end
 
+--****MOD****-- 
+
 main()
 
 local currTime = 0
@@ -92,12 +95,14 @@ math.randomseed(os.time())
 
 random = math.random(45)
 
+--****EFECTOS****--
+
 if random == 1 then
 
-  ui.addTextArea(1,"Vampiro",nil,50,50,0,0,0x480f04,0x864e2b)
-  for name,player in pairs(tfm.get.room.playerList) do
-    tfm.exec.setVampirePlayer(name)
-  end
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.freezePlayer(name, false)
+		congelado = 0
+		end
 end
 
 if random == 2 then
@@ -451,9 +456,9 @@ end
 
 if random == 44 then
 
-	ui.addTextArea(1,"Objeto",nil,50,50,0,0,0xb36b00, 0xffb366)
+ ui.addTextArea(1,"Objeto",nil,50,50,0,0,0xb36b00, 0xffb366)
 	tfm.exec.addPhysicObject ( 2, 50, 50,table)
-end
+end             
 
 if random == 45 then
 
