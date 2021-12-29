@@ -587,6 +587,22 @@ if random == 51 then
    	   tfm.exec.setPlayerScore(name, puntos)
   	end
 end
+		
+if random == 52 then
+
+  ui.addTextArea(1,"Selfie",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.playEmote (name, 12)
+  end
+end
+
+if random == 53 then
+
+  ui.addTextArea(1,"Masmelos",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.playEmote (name, 11)
+  end
+end		
 	
 end
 end
