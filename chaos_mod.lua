@@ -403,7 +403,7 @@ if random == 34 then
 
   ui.addTextArea(1,"Acciones al azar",nil,50,50,0,0,0x110133,0xfce38a,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
-	   randomAni = math.random(0, 9)
+	   randomAni = math.random(0, 27)
     tfm.exec.playEmote (name, randomAni)
   end
 end
