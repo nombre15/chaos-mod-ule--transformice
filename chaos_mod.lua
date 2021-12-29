@@ -385,7 +385,7 @@ if random == 32 then
 
   ui.addTextArea(1,"Todos lloran",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
-    tfm.exec.playEmote (name, 3)
+    tfm.exec.playEmote (name, 2)
   end
 end
 
