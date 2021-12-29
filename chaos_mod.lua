@@ -1,5 +1,5 @@
 --MAPAS--
-local maps = {1,2,3,4,5,6,8,9,100,3098930,5082028,1810386,1864223,1263900,1729924,2372033,1700658,2706423,7838502,7860080,4818369,7722607,7800030,405075,2455250,282434,313091,230741,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573,4972785,7650904}
+local maps = {1,2,3,4,5,6,8,9,100,3098930,7808352,2083343,5082028,7810564,1810386,1864223,7812680,1263900,1729924,2372033,1700658,2706423,7838502,7860080,4818369,7722607,7800030,405075,2455250,282434,313091,230741,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573,4972785,7650904}
 local currentMap
 local playersAlive
 
@@ -31,7 +31,9 @@ function eventNewGame()
   end
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.giveTransformations(name, false)
-  end
+    inicioX = tfm.get.room.playerList[name].x
+    inicioY = tfm.get.room.playerList[name].y
+  end  
 end
 
 function eventPlayerRespawn(name)
@@ -93,7 +95,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(49)
+random = math.random(51)
 
 --****EFECTOS****--
 
@@ -354,7 +356,7 @@ end
 
 if random == 29 then
 
-  ui.addTextArea(1,"Todos bailan",nil,50,50,0,0,0x335d2d,0x7ea04d,1,true)
+  ui.addTextArea(1,"Harlem shake",nil,50,50,0,0,0x335d2d,0x7ea04d,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
     Xcoord = tfm.get.room.playerList[name].x
     Ycoord = tfm.get.room.playerList[name].y
@@ -399,9 +401,9 @@ end
 
 if random == 34 then
 
-  randomAni = math.random(0, 9)
   ui.addTextArea(1,"Acciones al azar",nil,50,50,0,0,0x110133,0xfce38a,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
+	   randomAni = math.random(0, 9)
     tfm.exec.playEmote (name, randomAni)
   end
 end
@@ -568,6 +570,23 @@ if random == 49 then
 		tfm.exec.displayParticle(36, Xcoord, Ycoord)
 	end
 end
-    	
+
+if random == 50 then
+
+	ui.addTextArea(1,"Empieza otra vez",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do 
+		tfm.exec.movePlayer ( name, inicioX, inicioY)  
+	end 
+end
+
+if random == 51 then
+
+	ui.addTextArea(1,"Puntos al azar",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do
+	   puntos = math.random(1000)
+   	   tfm.exec.setPlayerScore(name, puntos)
+  	end
+end
+	
 end
 end
