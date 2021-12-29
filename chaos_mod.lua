@@ -603,6 +603,41 @@ if random == 53 then
     tfm.exec.playEmote (name, 11)
   end
 end		
-	
+
+if random == 54 then
+
+  ui.addTextArea(1,"Fiesta",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.playEmote (name, 16)
+  end
+
+	 function randomColor()
+    return "0x" .. string.format("%X", math.random(0x000000, 0xFFFFFF))
+  end
+
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.setNameColor(name, randomColor());
+  end
+
+  for name,player in pairs(tfm.get.room.playerList) do
+    Xcoord = tfm.get.room.playerList[name].x
+    Ycoord = tfm.get.room.playerList[name].y
+    Xrandom = math.random(800)
+	   Yrandom = math.random(400)
+	   tfm.exec.displayParticle(22, Xcoord, Ycoord)
+	   tfm.exec.displayParticle(22, Xcoord, Ycoord, 1, 1)
+	   tfm.exec.displayParticle(22, Xcoord, Ycoord, -1, -1)
+	   tfm.exec.displayParticle(23, Xcoord, Ycoord)
+	   tfm.exec.displayParticle(23, Xcoord, Ycoord, 2, 2)
+	   tfm.exec.displayParticle(23, Xcoord, Ycoord, -2, -2)
+	   tfm.exec.displayParticle(1, Xrandom, Yrandom)
+	   tfm.exec.displayParticle(1, Xrandom, Yrandom, 1, 1)
+	   tfm.exec.displayParticle(1, Xrandom, Yrandom, -1, -1)
+    tfm.exec.displayParticle(3, Xrandom, Yrandom)
+	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
+	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
+  end
+end
+		
 end
 end
