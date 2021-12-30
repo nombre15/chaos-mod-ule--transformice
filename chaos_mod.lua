@@ -457,12 +457,10 @@ end
 
 if random == 40 then
 
-  ui.addTextArea(1,"Congelar a todos",nil,50,50,0,0,0x045791, 0x9ac6e6,1,true)
+  ui.addTextArea(1,"Lluvia de ratones",nil,50,50,0,0,0x045791, 0x9ac6e6,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
-    Xcoord = tfm.get.room.playerList[name].x
-    Ycoord = tfm.get.room.playerList[name].y
-    tfm.exec.killPlayer(name)
-    tfm.exec.addShamanObject (54, Xcoord, Ycoord, 0, 0, 0)
+    Xcoord = math.random(800)
+    tfm.exec.movePlayer ( name, Xcoord, 1)				
   end
 end
 
