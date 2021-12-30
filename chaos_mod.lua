@@ -74,7 +74,8 @@ eventLoop = function()
   cronometro = cronometro - 1
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323,1,true)
-
+tfm.exec.setUIMapName("ChaosMod")
+	
 if currTime == agua then
 
 cronometro = agua*2
