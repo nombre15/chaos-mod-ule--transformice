@@ -596,13 +596,21 @@ end
 
 if random == 53 then
 
-  ui.addTextArea(1,"Masmelos",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  ui.addTextArea(1,"Malvaviscos",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.playEmote (name, 11)
   end
 end		
 
 if random == 54 then
+
+  ui.addTextArea(1,"Karaoke",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  for name,player in pairs(tfm.get.room.playerList) do
+    tfm.exec.playEmote (name, 20)
+  end
+end		
+		
+if random == 55 then
 
   ui.addTextArea(1,"Fiesta",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
@@ -636,6 +644,40 @@ if random == 54 then
 	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
   end
 end
-		
+
+
+if random == 56 then
+
+	ui.addTextArea(1,"CAÑONES",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+	tfm.exec.addShamanObject (1701, 50, 0, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 50, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 100, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 150, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 200, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 250, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 300, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 350, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 50, 400, 90, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 0, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 50, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 100, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 150, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 200, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 250, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 300, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 350, 270, 6, 0)
+	tfm.exec.addShamanObject (1701, 750, 400, 270, 6, 0)
+end	
+
+if random == 57 then
+
+	ui.addTextArea(1,"Empujar",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    	Ycoord = tfm.get.room.playerList[name].y
+		tfm.exec.movePlayer ( name, 0, 0,true,-60,0)
+	end
+end		
+
 end
 end
