@@ -548,8 +548,8 @@ if random == 48 then
 	ui.addTextArea(1,"Todos besan",nil,50,50,0,0,0xa8009a,0xf3dff5,1,true)
  for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.playEmote (name, 3)
-    	Xcoord = tfm.get.room.playerList[name].x
-    	Ycoord = tfm.get.room.playerList[name].y
+    		Xcoord = tfm.get.room.playerList[name].x
+    		Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.displayParticle(31, Xcoord, Ycoord)
 		tfm.exec.displayParticle(31, Xcoord, Ycoord, 1, 1)
 		tfm.exec.displayParticle(31, Xcoord, Ycoord, -1, -1)
@@ -560,11 +560,11 @@ if random == 49 then
 
 	ui.addTextArea(1,"Teletransportacion random",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
  for name,player in pairs(tfm.get.room.playerList) do
-    	Xcoord = math.random(800)
+    		Xcoord = math.random(800)
 		Ycoord = math.random(400)
 		tfm.exec.movePlayer ( name, Xcoord, Ycoord)
-    	ratonX = tfm.get.room.playerList[name].x
-    	ratonY = tfm.get.room.playerList[name].y
+    		ratonX = tfm.get.room.playerList[name].x
+    		ratonY = tfm.get.room.playerList[name].y
 		tfm.exec.displayParticle(36, ratonX, ratonY)
 		tfm.exec.displayParticle(36, Xcoord, Ycoord)
 	end
@@ -597,23 +597,23 @@ end
 
 if random == 53 then
 
-  ui.addTextArea(1,"Malvaviscos",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  ui.addTextArea(1,"Malvaviscos",nil,50,50,0,0,0x453003,0xfffcf5,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.playEmote (name, 11)
   end
-end		
+end
 
 if random == 54 then
 
-  ui.addTextArea(1,"Karaoke",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  ui.addTextArea(1,"Karaoke",nil,50,50,0,0,0x0a0a0a,0x00330b,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.playEmote (name, 20)
   end
-end		
-		
+end
+
 if random == 55 then
 
-  ui.addTextArea(1,"Fiesta",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+  ui.addTextArea(1,"Fiesta",nil,50,50,0,0,0x35014d,0xa900f7,1,true)
   for name,player in pairs(tfm.get.room.playerList) do
     tfm.exec.playEmote (name, 16)
   end
@@ -640,16 +640,15 @@ if random == 55 then
 	   tfm.exec.displayParticle(1, Xrandom, Yrandom)
 	   tfm.exec.displayParticle(1, Xrandom, Yrandom, 1, 1)
 	   tfm.exec.displayParticle(1, Xrandom, Yrandom, -1, -1)
-    tfm.exec.displayParticle(3, Xrandom, Yrandom)
+   	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
 	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
 	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
   end
 end
 
-
 if random == 56 then
 
-	ui.addTextArea(1,"CAÑONES",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
+	ui.addTextArea(1,"CAÑONES",nil,50,50,0,0,0x000000,0x292828,1,true)
 	tfm.exec.addShamanObject (1701, 50, 0, 90, 6, 0)
 	tfm.exec.addShamanObject (1701, 50, 50, 90, 6, 0)
 	tfm.exec.addShamanObject (1701, 50, 100, 90, 6, 0)
@@ -675,21 +674,41 @@ if random == 57 then
 	ui.addTextArea(1,"Empujar",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    	Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, 0, 0,true,-60,0)
 	end
-end		
+end
 
 if random == 58 then
 
 	ui.addTextArea(1,"Turbo",nil,50,50,0,0,0x5e4500,0xffbb00,1,true)
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    	Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, 0, 0,true,60,0)
 	end
 end
-		
+
+if random == 59 then
+
+	ui.addTextArea(1,"Salto",nil,50,50,0,0,0x026305,0xaaf20f,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    		Ycoord = tfm.get.room.playerList[name].y
+		tfm.exec.movePlayer ( name, 0, 0,true,0,-50)
+	end
+end
+
+if random == 60 then
+
+	ui.addTextArea(1,"Lanzar a todos al espacio",nil,50,50,0,0,0x01094a,0x394399,1,true)	
+	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    		Ycoord = tfm.get.room.playerList[name].y
+		tfm.exec.movePlayer ( name, 0, 0,true,0,-800)
+	end
+end
+
 		
 end
 end
