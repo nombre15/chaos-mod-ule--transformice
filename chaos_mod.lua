@@ -679,5 +679,16 @@ if random == 57 then
 	end
 end		
 
+if random == 58 then
+
+	ui.addTextArea(1,"Turbo",nil,50,50,0,0,0x5e4500,0xffbb00,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    	Ycoord = tfm.get.room.playerList[name].y
+		tfm.exec.movePlayer ( name, 0, 0,true,60,0)
+	end
+end
+		
+		
 end
 end
