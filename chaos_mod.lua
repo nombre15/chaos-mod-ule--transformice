@@ -709,6 +709,14 @@ if random == 60 then
 	end
 end
 
+if random == 61 then
+
+	ui.addTextArea(1,"0 puntos",nil,50,50,0,0,0x191b33,0x230236,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do
+
+    tfm.exec.setPlayerScore(name, 0)
+ end
+end
 		
 end
 end
