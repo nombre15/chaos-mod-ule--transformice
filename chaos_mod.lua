@@ -649,14 +649,12 @@ end
 if random == 56 then
 
 	ui.addTextArea(1,"CAÑONES",nil,50,50,0,0,0x000000,0x292828,1,true)
-
 	coord = 0
 	
 	while coord ~= 400 do
 		tfm.exec.addShamanObject (1701, 50, coord, 90, 6, 0)
 		coord = coord + 50
 	end
-
 	coord = 0
 
 	while coord ~= 400 do
