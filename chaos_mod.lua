@@ -649,24 +649,20 @@ end
 if random == 56 then
 
 	ui.addTextArea(1,"CAÑONES",nil,50,50,0,0,0x000000,0x292828,1,true)
-	tfm.exec.addShamanObject (1701, 50, 0, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 50, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 100, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 150, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 200, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 250, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 300, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 350, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 50, 400, 90, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 0, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 50, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 100, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 150, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 200, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 250, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 300, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 350, 270, 6, 0)
-	tfm.exec.addShamanObject (1701, 750, 400, 270, 6, 0)
+
+	coord = 0
+	
+	while coord ~= 400 do
+		tfm.exec.addShamanObject (1701, 50, coord, 90, 6, 0)
+		coord = coord + 50
+	end
+
+	coord = 0
+
+	while coord ~= 400 do
+		tfm.exec.addShamanObject (1701, 750, coord, 270, 6, 0)
+		coord = coord + 50
+	end
 end	
 
 if random == 57 then
