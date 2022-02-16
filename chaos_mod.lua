@@ -96,7 +96,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(51)
+random = math.random(64)
 
 --****EFECTOS****--
 
