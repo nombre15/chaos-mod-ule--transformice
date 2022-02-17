@@ -498,17 +498,19 @@ if random == 43 then
   end
 end
 
+
 if random == 44 then
 
  ui.addTextArea(1,"Niebla",nil,50,50,0,0,0x383838, 0x8c8c8c,1,true)
 	tfm.exec.addPhysicObject ( 8, 400, 100, {type = 8,
     miceCollision = false,
+    groundCollision = false,
     width = 1300,
     height = 1300,
     contactListener = true,
 	   foreground = true
 })
-end             
+end           
 
 if random == 45 then
 
@@ -869,6 +871,80 @@ if random == 70 then
 })
 end
 
+if random == 71 then
+
+ ui.addTextArea(1,"Niebla extrema",nil,50,50,0,0,0x92d9f2, 0xe3f6fd,1,true)
+	
+	numero = 0
+	while numero ~= 13 do
+	tfm.exec.addPhysicObject (numero, 400, 100, {type = 8,
+    miceCollision = false,
+	   groundCollision = false,
+    width = 1300,
+    height = 1300,
+    contactListener = true,
+	   foreground = true
+})
+	numero = numero + 1
+	end
+end   
+
+if random == 72 then
+	
+	ui.addTextArea(1,"Velocidad",nil,50,50,0,0,0xf03118, 0xffb805,1,true)
+
+	Xcoord = 0
+	Ycoord = 0
+	while Ycoord ~= 400 do
+		tfm.exec.addBonus (5, Xcoord, Ycoord, 0, 0, true, nil)
+		Xcoord = Xcoord + 50
+		
+		if Xcoord == 800 then
+			Ycoord = Ycoord + 50
+			Xcoord = 0
+		end
+	end
+end
+
+if random == 73 then
+
+ ui.addTextArea(1,"Caja de acido",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
+	tfm.exec.addPhysicObject (1, 450, 400, {type = 19,
+    miceCollision = true,
+    width = 1300,
+    height = 13,
+    contactListener = true,
+})
+
+	tfm.exec.addPhysicObject (2, 450, 20, {type = 19,
+    miceCollision = true,
+    width = 1300,
+    height = 13,
+    contactListener = true,
+}) 
+
+	tfm.exec.addPhysicObject (3, 0, 0, {type = 19,
+    miceCollision = true,
+    width = 13,
+    height = 1000,
+    contactListener = true,
+})
+
+	tfm.exec.addPhysicObject (4, 800, 0, {type = 19,
+    miceCollision = true,
+    width = 13,
+    height = 1000,
+    contactListener = true,
+})
+end
+
+if random == 74 then
+
+	ui.addTextArea(1,"Modo divino",nil,50,50,0,0,0x420480, 0xb245ed,1,true)
+	for name,player in pairs(tfm.get.room.playerList) do 
+		 tfm.exec.setShamanMode (name, 2)
+	end
+end
 
 end
 end
