@@ -1,5 +1,8 @@
 --MAPAS--
 local maps = {1,2,3,4,5,6,8,9,100,3098930,7808352,2083343,5082028,7810564,1810386,1864223,7890259,7812680,1263900,1729924,2372033,1700658,2706423,7838502,7860080,4818369,7722607,7800030,405075,2455250,282434,313091,230741,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573,4972785,7650904}
+local bootcamps = {167333,170007,176615,174065,156510,357837,159145,177652,212322,215933,408577,158053,159131,257715,447805,422981,435812,176729,258160,159298,410040,176619,220352,151655,168204,208653,272689,277427,155628}
+local defilante = {4123226,6913844,4032861,3761727,7816905,3594982,7205111,7828977,7530218,7868694}
+local survivor = {7516401,391738,7682811,6737359,310529,728382,392616,3107377,1659906,7317000,3579303,280159}  
 local currentMap
 local playersAlive
 
@@ -96,7 +99,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(74)
+random = math.random(86)
 
 --****EFECTOS****--
 
@@ -993,6 +996,75 @@ if random == 78 then
 		coordenada = coordenada + 25
 	end 
 end
+		
+if random == 79 then
+
+	ui.addTextArea(1,"Enciendan la luz",nil,50,50,0,0,0x00,0xffffff,1,true)
+	
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setPlayerNightMode(name)
+	end
+end
+
+if random == 80 then
+
+	ui.addTextArea(1,"Ratones pesados",nil,50,50,0,0,0x3b1a00,0x855e40,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setPlayerGravityScale(name,1.5)
+	end
+end
+	
+if random == 81 then
+
+	ui.addTextArea(1,"Ratones livianos",nil,50,50,0,0,0x402713,0x947156,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setPlayerGravityScale(name,0.2)
+	end
+end
+
+
+if random == 82 then
+
+	ui.addTextArea(1,"Obesidad morbida",nil,50,50,0,0,0x1c0c00,0x402c1d,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setPlayerGravityScale(name,10)
+	end
+end
+
+if random == 83 then
+
+	ui.addTextArea(1,"Super salto",nil,50,50,0,0,0x664822,0xd48117,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setPlayerGravityScale(name,0.4)
+	end
+end
+
+if random == 84 then
+
+ 	ui.addTextArea(1,"Bootcamp",nil,50,50,0,0,0x172b01,0x402a0a,1,true)
+	newMap = math.random(#bootcamps)
+	tfm.exec.newGame(bootcamps[newMap])
+	tfm.exec.setGameTime(300, true)
+end
+
+if random == 85 then
+
+ 	ui.addTextArea(1,"Defilante",nil,50,50,0,0,0x022366,0xc2a804,1,true)
+	newMap = math.random(#defilante)
+	tfm.exec.newGame(defilante[newMap])
+end
+
+if random == 86 then
+
+ 	ui.addTextArea(1,"Survivor",nil,50,50,0,0,0x1a1919,0x696868,1,true)
+	newMap = math.random(#survivor)
+	tfm.exec.newGame(survivor[newMap])
+end		
+
 		
 end
 end
