@@ -956,6 +956,7 @@ if random == 72 then
 	Ycoord = 0
 	while Ycoord ~= 400 do
 		tfm.exec.addBonus (5, Xcoord, Ycoord, 0, 0, true, nil)
+		tfm.exec.displayParticle(3, Xcoord, Ycoord)
 		Xcoord = Xcoord + 50
 		if Xcoord == 800 then
 			Ycoord = Ycoord + 50
@@ -1014,6 +1015,7 @@ if random == 75 then
 	Ycoord = 0
 	while Ycoord ~= 400 do
 		tfm.exec.addBonus (3, Xcoord, Ycoord, 0, 0, true, nil)
+		tfm.exec.displayParticle(3, Xcoord, Ycoord)
 		Xcoord = Xcoord + 50
 		if Xcoord == 800 then
 			Ycoord = Ycoord + 50
@@ -1021,7 +1023,7 @@ if random == 75 then
 		end
 	end
 end
-
+		
 if random == 76 then
 
 	ui.addTextArea(1,"Suelo extra",nil,50,50,0,0,0x5b2e85, 0xffffff,1,true)
@@ -1029,6 +1031,7 @@ if random == 76 then
 	Xcoord = 0
 	while Xcoord ~= 850 do
 		tfm.exec.addBonus (6, Xcoord, 1, 0, 0, true, nil)
+		tfm.exec.displayParticle(3, Xcoord, 0)
 		Xcoord = Xcoord + 25
 	end
 end
@@ -1041,6 +1044,7 @@ if random == 77 then
 	Ycoord = 0
 	while Ycoord ~= 450 do
 		tfm.exec.addBonus (2, Xcoord, Ycoord, 0, 0, true, nil)
+		tfm.exec.displayParticle(3, Xcoord, Ycoord)
 		Xcoord = Xcoord + 50
 		if Xcoord == 850 then
 			Ycoord = Ycoord + 50
