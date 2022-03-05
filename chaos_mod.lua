@@ -1046,6 +1046,7 @@ end
 if random == 84 then
 
  	ui.addTextArea(1,"Bootcamp",nil,50,50,0,0,0x172b01,0x402a0a,1,true)
+			
 	newMap = math.random(#bootcamps)
 	tfm.exec.newGame(bootcamps[newMap])
 	tfm.exec.setGameTime(300, true)
@@ -1054,6 +1055,7 @@ end
 if random == 85 then
 
  	ui.addTextArea(1,"Defilante",nil,50,50,0,0,0x022366,0xc2a804,1,true)
+			
 	newMap = math.random(#defilante)
 	tfm.exec.newGame(defilante[newMap])
 end
@@ -1061,6 +1063,7 @@ end
 if random == 86 then
 
  	ui.addTextArea(1,"Survivor",nil,50,50,0,0,0x1a1919,0x696868,1,true)
+			
 	newMap = math.random(#survivor)
 	tfm.exec.newGame(survivor[newMap])
 end		
