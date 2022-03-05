@@ -73,8 +73,8 @@ local currTime = 0
 local agua = 10
 local cronometro = agua*2
 eventLoop = function()
-  currTime = currTime + .5
-  cronometro = cronometro - 1
+currTime = currTime + .5
+cronometro = cronometro - 1
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323,1,true)
 tfm.exec.setUIMapName("ChaosMod")
@@ -106,9 +106,10 @@ random = math.random(86)
 if random == 1 then
 
  ui.addTextArea(1,"Vampiros",nil,50,50,0,0,0x2940d3,0x39a9cb,1,true)
-	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.setVampirePlayer ( name, true)
-	end
+			
+ for name,player in pairs(tfm.get.room.playerList) do
+	tfm.exec.setVampirePlayer ( name, true)
+ end
 end
 
 if random == 2 then
@@ -615,7 +616,7 @@ if random == 55 then
     tfm.exec.playEmote (name, 16)
   end
 
-	 function randomColor()
+  function randomColor()
     return "0x" .. string.format("%X", math.random(0x000000, 0xFFFFFF))
   end
 
@@ -627,19 +628,19 @@ if random == 55 then
     Xcoord = tfm.get.room.playerList[name].x
     Ycoord = tfm.get.room.playerList[name].y
     Xrandom = math.random(800)
-	   Yrandom = math.random(400)
-	   tfm.exec.displayParticle(22, Xcoord, Ycoord)
-	   tfm.exec.displayParticle(22, Xcoord, Ycoord, 1, 1)
-	   tfm.exec.displayParticle(22, Xcoord, Ycoord, -1, -1)
-	   tfm.exec.displayParticle(23, Xcoord, Ycoord)
-	   tfm.exec.displayParticle(23, Xcoord, Ycoord, 2, 2)
-	   tfm.exec.displayParticle(23, Xcoord, Ycoord, -2, -2)
-	   tfm.exec.displayParticle(1, Xrandom, Yrandom)
-	   tfm.exec.displayParticle(1, Xrandom, Yrandom, 1, 1)
-	   tfm.exec.displayParticle(1, Xrandom, Yrandom, -1, -1)
+    Yrandom = math.random(400)
+    tfm.exec.displayParticle(22, Xcoord, Ycoord)
+    tfm.exec.displayParticle(22, Xcoord, Ycoord, 1, 1)
+    tfm.exec.displayParticle(22, Xcoord, Ycoord, -1, -1)
+    tfm.exec.displayParticle(23, Xcoord, Ycoord)
+    tfm.exec.displayParticle(23, Xcoord, Ycoord, 2, 2)
+    tfm.exec.displayParticle(23, Xcoord, Ycoord, -2, -2)
+    tfm.exec.displayParticle(1, Xrandom, Yrandom)
+    tfm.exec.displayParticle(1, Xrandom, Yrandom, 1, 1)
+    tfm.exec.displayParticle(1, Xrandom, Yrandom, -1, -1)
     tfm.exec.displayParticle(3, Xrandom, Yrandom)
-	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
-	   tfm.exec.displayParticle(3, Xrandom, Yrandom)
+    tfm.exec.displayParticle(3, Xrandom, Yrandom)
+    tfm.exec.displayParticle(3, Xrandom, Yrandom)
   end
 end
 
@@ -724,14 +725,21 @@ end
 if random == 64 then
 
  ui.addTextArea(1,"Inundacion",nil,50,50,0,0,0x649ca5,0x8cb4bc,1,true)
+
 	tfm.exec.addPhysicObject (9, 400, 100, {type = 9,
     miceCollision = false,
     width = 1300,
     height = 1300,
     contactListener = true,
 	   foreground = true
-})
-end   
+	})
+ 	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    	Ycoord = tfm.get.room.playerList[name].y
+	   	tfm.exec.displayParticle(14, Xcoord, Ycoord)
+ 		tfm.exec.displayParticle(14, Xcoord, Ycoord, 1, 1)
+  end		
+end 
 
 if random == 65 then
 
