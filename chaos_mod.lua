@@ -76,6 +76,7 @@ local cronometro = agua*2
 eventLoop = function()
 currTime = currTime + .5
 cronometro = cronometro - 1
+tfm.exec.disableAfkDeath(true)
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323,1,true)
 tfm.exec.setUIMapName("ChaosMod")
