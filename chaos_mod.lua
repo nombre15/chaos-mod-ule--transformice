@@ -1150,6 +1150,19 @@ if random == 87 then
 	end
 end		
 
+if random == 88 then
+
+	ui.addTextArea(1,"RIP chaman",nil,50,50,0,0,0x125fb0,0xc3d5e8,1,true)
+	
+	local contador = 0
+	for name,player in pairs(tfm.get.room.playerList) do
+         	while contador ~= 1 do
+				tfm.exec.killPlayer(name)
+				contador = contador + 1
+			end
+	end
+end		
+		
 
 end
 end
