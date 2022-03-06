@@ -1251,7 +1251,7 @@ end
 
 if random == 94 then
 
-	ui.addTextArea(1,"Tirar abajo",nil,50,50,0,0,0x738581,0xafc7b2,1,true)
+	ui.addTextArea(1,"Tirar a todos abajo",nil,50,50,0,0,0x738581,0xafc7b2,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
