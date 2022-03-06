@@ -1135,6 +1135,12 @@ if random == 84 then
 	newMap = math.random(#bootcamps)
 	tfm.exec.newGame(bootcamps[newMap])
 	tfm.exec.setGameTime(300, true)
+	for name, player in pairs(tfm.get.room.playerList) do
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setShaman(name, false)
+		tfm.exec.setUIShamanName("")
+ 		end
+	end
 end
 
 if random == 85 then
