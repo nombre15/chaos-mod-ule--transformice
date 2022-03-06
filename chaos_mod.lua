@@ -1178,7 +1178,6 @@ if random == 88 then
 
 	ui.addTextArea(1,"Congelar chaman",nil,50,50,0,0,0x274fa1,0xb9e8ea,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
   		if tfm.get.room.playerList[name].isShaman then
     			tfm.exec.freezePlayer(name, true)
@@ -1191,7 +1190,6 @@ if random == 89 then
 
 	ui.addTextArea(1,"RIP chaman",nil,50,50,0,0,0x1a1a46,0xbfbfe7,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
   		if tfm.get.room.playerList[name].isShaman then
     			tfm.exec.killPlayer(name)
@@ -1203,7 +1201,6 @@ if random == 90 then
 
 	ui.addTextArea(1,"No chaman",nil,50,50,0,0,0x03518c,0xbfbfbf,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
   		if tfm.get.room.playerList[name].isShaman then
     			tfm.exec.setShaman(name, false)
@@ -1216,7 +1213,6 @@ if random == 91 then
 
 	ui.addTextArea(1,"Teletransportar chaman",nil,50,50,0,0,0x7d74cc,0x74b2cc,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
  		if tfm.get.room.playerList[name].isShaman then
     			Xcoord = math.random(800)
@@ -1235,7 +1231,6 @@ if random == 92 then
 
 	ui.addTextArea(1,"Chaman ciego",nil,50,50,0,0,0x000000,0x98e2eb,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
   		if tfm.get.room.playerList[name].isShaman then
     			tfm.exec.setPlayerNightMode(true,name)
@@ -1247,7 +1242,6 @@ if random == 93 then
 
 	ui.addTextArea(1,"Muerte al azar",nil,50,50,0,0,0x1a1a1a,0xb40d0d,1,true)
 
-	local shaman = nil
 	for name, player in pairs(tfm.get.room.playerList) do
   		if tfm.get.room.playerList[name].isFacingRight then
     			tfm.exec.killPlayer(name)
