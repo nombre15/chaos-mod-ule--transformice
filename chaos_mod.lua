@@ -100,7 +100,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(86)
+random = math.random(87)
 
 --****EFECTOS****--
 
