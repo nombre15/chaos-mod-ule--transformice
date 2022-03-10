@@ -526,7 +526,7 @@ end
 
 if random == 43 then
 
-	ui.addTextArea(1,"Explosion",nil,50,50,0,0,0x850601, 0xffc800,1,true)
+	ui.addTextArea(1,"Ratones bomba",nil,50,50,0,0,0x850601, 0xffc800,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
