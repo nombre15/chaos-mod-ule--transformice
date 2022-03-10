@@ -1260,6 +1260,75 @@ if random == 94 then
 	end
 end
 		
+if random == 95 then
+
+ 	ui.addTextArea(1,"Lluvia de lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
+
+	contador = 0
+
+	while contador < 15 do	
+		Xcoord = math.random(800)
+		tfm.exec.addPhysicObject (contador, Xcoord, 1, {type = 3,
+    		miceCollision = true,
+    		width = 20,
+    		height = 20,
+    		contactListener = true,
+			groundCollision = false,
+			foreground = true,
+			friction = 0.2,
+   			restitution = 20,
+			dynamic = true
+		})
+		contador = contador + 1
+	end
+end 
+	
+
+if random == 96 then
+
+ 	ui.addTextArea(1,"Lluvia de acido",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)	
+
+	contador = 0
+
+	while contador ~= 15 do
+		Xcoord = math.random(800)
+		tfm.exec.addPhysicObject (contador, Xcoord, 1, {type = 19,
+    		miceCollision = true,
+    		width = 20,
+    		height = 20,
+    		contactListener = true,
+			groundCollision = false,
+			foreground = true,
+			friction = 0.2,
+   			restitution = 20,
+			dynamic = true
+		})
+		contador = contador + 1
+	end
+end 
+
+
+if random == 97 then
+
+	ui.addTextArea(1,"Ataque aereo",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	coord = 0
+	while coord ~= 400 do
+		tfm.exec.addShamanObject (80, 50, coord, 90, 6, 0)
+		tfm.exec.addShamanObject (80, 750, coord, 270, 6, 0)
+		coord = coord + 50
+	end
+end
+
+if random == 98 then
+
+	ui.addTextArea(1,"NOSE",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	tfm.exec.addNPC(m, 50, 50)
+end
+
+random = 98
+		
 
 end
 end
