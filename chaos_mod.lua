@@ -101,7 +101,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(94)
+random = math.random(111)
 
 --****EFECTOS****--
 
@@ -1422,6 +1422,87 @@ if random == 106 then
 	end
 end
 
+if random == 107 then
+
+	ui.addTextArea(1,"Papaille",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	Xcoord = math.random(800)
+	Ycoord = math.random(400)
+ 	titulo = math.random(537)
+ 	tfm.exec.addNPC("Papaille", { title = 298,
+ 		look = "4;2,0,2,0,0,0,0,0,1", 
+		x = Xcoord,
+ 		y = Ycoord,
+ 		lookAtPlayer = true,
+		female = true
+    	})
+end
+
+if random == 108 then
+
+	ui.addTextArea(1,"Elise",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	Xcoord = math.random(800)
+	Ycoord = math.random(400)
+ 	titulo = math.random(537)
+ 	tfm.exec.addNPC("Elise", { title = 5,
+ 		look = "3;10,0,1,0,1,0,0,1,0", 
+		x = Xcoord,
+ 		y = Ycoord,
+ 		lookAtPlayer = true,
+		female = true
+     	})
+end
+
+
+if random == 109 then
+
+	ui.addTextArea(1,"Von Drekkemaus",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	Xcoord = math.random(800)
+	Ycoord = math.random(400)
+ 	titulo = math.random(537)
+ 	tfm.exec.addNPC("Von Drekkemaus", { title = 287,
+ 		look = "50;0,0,0,0,0,0,0,0,0", 
+		x = Xcoord,
+ 		y = Ycoord,
+ 		lookAtPlayer = true
+     	})
+end
+
+if random == 110 then
+
+	ui.addTextArea(1,"Quien esta ciego?",nil,50,50,0,0,0xd62b70,0x9efcb4,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.setPlayerNightMode(name)
+ 		end
+	end
+end
+
+if random == 111 then
+
+	ui.addTextArea(1,"Gordos al azar",nil,50,50,0,0,0xd62b70,0x9efcb4,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.setPlayerGravityScale(name,1.5)
+ 		end
+	end
+end
+	
+
+if random == 112 then
+
+	ui.addTextArea(1,"Chaman pesado",nil,50,50,0,0,0x1a1a46,0xbfbfe7,1,true)
+
+	for name, player in pairs(tfm.get.room.playerList) do
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setPlayerGravityScale(name,1.8)
+ 		end
+	end
+end
 		
 
 end
