@@ -1322,9 +1322,17 @@ end
 
 if random == 98 then
 
-	ui.addTextArea(1,"NOSE",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"RATON",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
 
-	tfm.exec.addNPC(m, 50, 50)
+	Xcoord = math.random(800)
+	Ycoord = math.random(400)
+ 	titulo = math.random(537)
+ 	tfm.exec.addNPC("RATON", { title = titulo,
+ 		look = "1;0,0,0,0,0,0,0,0,0", 
+		x = Xcoord,
+ 		y = Ycoord,
+ 		lookAtPlayer = true
+     })
 end
 
 if random == 99 then
