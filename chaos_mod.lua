@@ -1327,7 +1327,168 @@ if random == 98 then
 	tfm.exec.addNPC(m, 50, 50)
 end
 
-random = 98
+if random == 95 then
+
+ 	ui.addTextArea(1,"Lluvia de lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
+
+	contador = 0
+
+	while contador < 15 do	
+		Xcoord = math.random(800)
+		tfm.exec.addPhysicObject (contador, Xcoord, 1, {type = 3,
+    		miceCollision = true,
+    		width = 20,
+    		height = 20,
+    		contactListener = true,
+			groundCollision = false,
+			foreground = true,
+			friction = 0.2,
+   			restitution = 20,
+			dynamic = true
+		})
+		contador = contador + 1
+	end
+end 
+	
+
+if random == 96 then
+
+ 	ui.addTextArea(1,"Lluvia de acido",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)	
+
+	contador = 0
+
+	while contador ~= 15 do
+		Xcoord = math.random(800)
+		tfm.exec.addPhysicObject (contador, Xcoord, 1, {type = 19,
+    		miceCollision = true,
+    		width = 20,
+    		height = 20,
+    		contactListener = true,
+			groundCollision = false,
+			foreground = true,
+			friction = 0.2,
+   			restitution = 20,
+			dynamic = true
+		})
+		contador = contador + 1
+	end
+end 
+
+
+if random == 97 then
+
+	ui.addTextArea(1,"Ataque aereo",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	coord = 0
+	while coord ~= 400 do
+		tfm.exec.addShamanObject (80, 50, coord, 90, 6, 0)
+		tfm.exec.addShamanObject (80, 750, coord, 270, 6, 0)
+		coord = coord + 50
+	end
+end
+
+if random == 98 then
+
+	ui.addTextArea(1,"NOSE",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+
+	tfm.exec.addNPC(m, 50, 50)
+end
+
+if random == 99 then
+
+	ui.addTextArea(1,"Runas locas",nil,50,50,0,0,0x026362,0x03fcf8,1,true)
+
+	contador = 0
+	while contador ~= 10 do
+		Xcoord = math.random(800)
+		Xcoord2 = math.random(800)
+		Ycoord = math.random (400)
+		Ycoord2 = math.random(400)
+		angulo = math.random(360)
+		tfm.exec.addShamanObject (32, Xcoord, Ycoord, angulo, 0, 0, false)
+		tfm.exec.addShamanObject (32, Xcoord2, Ycoord2, angulo, 0, 0, true)
+		contador = contador + 1
+	end
+end
+
+if random == 100 then
+
+	ui.addTextArea(1,"Chamanes al azar",nil,50,50,0,0,0x553c27,0x08d9d,1,true)
+
+	for name, player in pairs(tfm.get.room.playerList) do
+  		if tfm.get.room.playerList[name].isFacingRight then
+    			tfm.exec.setShaman(name)
+ 		end
+	end
+end
+
+if random == 101 then
+
+ ui.addTextArea(1,"Vampiros al azar",nil,50,50,0,0,0x2940d3,0x39a9cb,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.setVampirePlayer ( name, true)
+		end
+	end
+end
+
+if random == 102 then
+
+ 	ui.addTextArea(1,"Quesos al azar",nil,50,50,0,0,0x77583b,0xffbd39,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.giveCheese(name)
+		end
+ 	end
+end
+
+if random == 103 then
+
+	ui.addTextArea(1,"Ganadores al azar",nil,50,50,0,0,0x14274e,0xe43a19,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.giveCheese(name)
+    		tfm.exec.playerVictory(name)
+		end
+ 	end
+end
+
+if random == 104 then
+
+	ui.addTextArea(1,"Congelamiento al azar",nil,50,50,0,0,0x1d566e,0x21aba5,1,true)
+ 
+ 	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.freezePlayer(name)
+ 		end
+	end
+end
+
+if random == 105 then
+
+	ui.addTextArea(1,"Quitar queso al azar",nil,50,50,0,0,0x202040,0xf0134d,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.removeCheese(name)
+		end
+ 	end
+end
+
+if random == 106 then
+
+	ui.addTextArea(1,"Globos al azar",nil,50,50,0,0,0xd62b70,0x9efcb4,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.attachBalloon(name)
+ 		end
+	end
+end
+
 		
 
 end
