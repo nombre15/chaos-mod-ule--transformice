@@ -1500,7 +1500,6 @@ if random == 111 then
 	end
 end
 	
-
 if random == 112 then
 
 	ui.addTextArea(1,"Chaman pesado",nil,50,50,0,0,0x1a1a46,0xbfbfe7,1,true)
@@ -1511,7 +1510,37 @@ if random == 112 then
  		end
 	end
 end
-		
+	
+if random == 113 then
 
+	ui.addTextArea(1,"Los muertos ganan",nil,50,50,0,0,0x14274e,0xe43a19,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isDead then
+			tfm.exec.respawnPlayer(name)
+			tfm.exec.giveCheese(name)
+    		tfm.exec.playerVictory(name)
+		end
+ 	end
+end
+
+if random == 114 then
+
+	ui.addTextArea(1,"Clones",nil,50,50,0,0,0x1a1a1a,0xb40d0d,1,true)
+
+	for name, player in pairs(tfm.get.room.playerList) do
+   	Xcoord = tfm.get.room.playerList[name].x
+		Ycoord = tfm.get.room.playerList[name].y
+		tfm.exec.addNPC(name, {title = (tfm.get.room.playerList[name].title), 
+		x = Xcoord,
+		y = Ycoord, 
+		look = (tfm.get.room.playerList[name].look), 
+		female = (tfm.get.room.playerList[name].gender), 
+		lookAtPlayer = true})
+ 		
+	end
+end
+
+		
 end
 end
