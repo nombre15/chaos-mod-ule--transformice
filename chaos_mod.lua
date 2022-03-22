@@ -1,8 +1,8 @@
 --MAPAS--
-local maps = {1,2,3,4,5,6,8,9,100,3098930,7808352,2083343,5082028,7810564,1810386,1864223,7890259,7812680,1263900,1729924,2372033,1700658,2706423,7838502,7860080,4818369,7722607,7800030,405075,2455250,282434,313091,230741,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573,4972785,7650904}
+local maps = {1,2,3,4,5,6,8,9,100,3098930,3605217,1943359,7808352,2083343,5082028,7810564,1810386,1864223,7890259,7812680,1263900,1729924,2372033,1700658,2706423,7838502,7860080,4818369,7722607,7800030,405075,2455250,282434,313091,230741,7801166,7800029,1738989,3295997,7800027,7800026,7726397,7438134,7800025,7840446,348801,6476975,410565,3680221,6571336,976721,335507,3603802,5488573,4972785,7650904}
 local bootcamps = {167333,170007,176615,174065,156510,357837,159145,177652,212322,215933,408577,158053,159131,257715,447805,422981,435812,176729,258160,159298,410040,176619,220352,151655,168204,208653,272689,277427,155628}
 local defilante = {4123226,6913844,4032861,3761727,7816905,3594982,7205111,7828977,7530218,7868694}
-local survivor = {7516401,6367108,6367106,391738,7682811,6737359,310529,728382,392616,3107377,1659906,7317000,3579303,280159}   
+local survivor = {7516401,6367108,6367106,391738,7682811,6737359,310529,728382,392616,3107377,1659906,7317000,3579303,280159}  
 local objetos = {1,2,3,4,0,5,6,7,10,17,18,19,20,23,28,29,30,31,32,33,34,35,39,40,45,46,54,57,59,60,61,6,67,68,69,85,63,65,80,89,90,91,95,96,97,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,199,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633,634,635,636,637,701,702,703,704,705,706,707,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1701,1702,1703,1704,1705,1706,1707,1708,1709,1710,1711,1712,1713,1714,1715,1716,1717,1718,1719,1720,1721,1722,1723,1724,1725,1726,1727,1728,1729,1730,1731,1732,1733,1734,1735,1736,2801,2802,2803,2804,2805,2806,2807,2808,2809,2810,2811,2812,2813,2814,2815,2816,2817,2818,2819,2820,2821,2822,2823,2824,2825,2826,2827,2828,2829,2830,2831,2832,2833,2834,2835,2836,2837,2838,2839,2840,2841,2842,2843,2844}
 local tribu = {2977496,7495064,3387601,4000002,1435432,1781199,3709376,988050,2875278,4881124,1252318,5157999,2999997}
 local currentMap
@@ -21,7 +21,7 @@ function startGame()
   currentMap = newMap
   tfm.exec.newGame(maps[newMap])
   for name,player in pairs(tfm.get.room.playerList) do
-  	tfm.exec.changePlayerSize(name, 1)
+  tfm.exec.changePlayerSize(name, 1)
   end
 end
 
@@ -72,25 +72,42 @@ end
 main()
 
 local currTime = 0
-local agua = 5
+local agua = 10
 local cronometro = agua*2
+local longitud = 0
+local color = "0x018f20"
 eventLoop = function()
 currTime = currTime + .5
 cronometro = cronometro - 1
 tfm.exec.disableAfkDeath(true)
 
 ui.addTextArea(2,cronometro,nil,700,50,30,0,0x272343,0xd72323,1,true)
+
+ui.addTextArea(3,"",nil,1,20,longitud,3,color,color,1,true)
+longitud = longitud + 43
+if longitud > 450 then
+	color = "0xeed202"
+end
+if longitud > 650.4 then
+	color = "0xca0b00"
+end
+if longitud > 800 then
+	longitud = 800
+end
+
 tfm.exec.setUIMapName("ChaosMod")
 
 if currTime == agua then
 
 	cronometro = agua*2
 	currTime = 0
+	longitud = 0
+	color = "0x018f20"
 
 	function eventNewGame ()
- 	for name,player in pairs(tfm.get.room.playerList) do
+ 		for name,player in pairs(tfm.get.room.playerList) do
   		tfm.exec.giveTransformations(name, false)
-	end
+		end
 
 	if congelado == 1 then
 		for name,player in pairs(tfm.get.room.playerList) do
@@ -102,13 +119,13 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(115)
+random = math.random(116)
 
 --****EFECTOS****--
 
 if random == 1 then
 
- 	ui.addTextArea(1,"Vampiros",nil,50,50,0,0,0x2940d3,0x39a9cb,1,true)
+ ui.addTextArea(1,"Vampiros",nil,50,50,0,0,0x2f000f,0x8b0202,1,true)
 
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.setVampirePlayer ( name, true)
@@ -117,10 +134,13 @@ end
 
 if random == 2 then
 
-	ui.addTextArea(1,"Meep!",nil,50,50,0,0,0x2940d3,0x39a9cb,1,true)
+	ui.addTextArea(1,"Meep!",nil,50,50,0,0,0x004747,0x009c9c,1,true)
 
 	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+    	Ycoord = tfm.get.room.playerList[name].y
  		tfm.exec.giveMeep(name)
+		tfm.exec.displayParticle(20, Xcoord, Ycoord)
  	end
 end
 
@@ -138,8 +158,8 @@ if random == 3 then
 
  	function eventKeyboard(name,key,down,x,y)
 		if key==32 then
-      			tfm.exec.movePlayer(name,0,0,true,0,-50,false)
-    		end
+      	tfm.exec.movePlayer(name,0,0,true,0,-50,false)
+    	end
  	end
 end
 
@@ -180,23 +200,23 @@ if random == 7 then
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.giveCheese(name)
- 	end
+ end
 end
 
 if random == 8 then
 
-	ui.addTextArea(1,"NIEVEE",nil,50,50,0,0,0x056676,0xdff5f2,1,true)
+	ui.addTextArea(1,"NIEVEE",nil,50,50,0,0,0x4c5c6c,0xdff5f2,1,true)
   
 	tfm.exec.snow()
 end
 
 if random == 9 then
 
-	ui.addTextArea(1,"Todos ganan",nil,50,50,0,0,0x14274e,0xe43a19,1,true)
+	ui.addTextArea(1,"Todos ganan",nil,50,50,0,0,0x1644a8,0xfe4567,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.giveCheese(name)
-    		tfm.exec.playerVictory(name)
+    	tfm.exec.playerVictory(name)
  	end
 end
 
@@ -204,40 +224,38 @@ if random == 10 then
 
 	ui.addTextArea(1,"666 puntos",nil,50,50,0,0,0x000000,0xd72323,1,true)
  
- 	for name,player in pairs(tfm.get.room.playerList) do
+ for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.setPlayerScore(name, 666)
- 	end
+ end
 end
 
 if random == 11 then
 
 	ui.addTextArea(1,"Congelar a todos",nil,50,50,0,0,0x1d566e,0x21aba5,1,true)
  
- 	for name,player in pairs(tfm.get.room.playerList) do
+ for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.freezePlayer(name)
  	end
-	congelado = 1
+	local congelado = 1
 end
 
 if random == 12 then
 
-	ui.addTextArea(1,"Mini ratones",nil,50,50,0,0,0x00043c,0xff9a76,1,true)
+	ui.addTextArea(1,"Mini ratones",nil,50,50,0,0,0x414288,0xff9a76,1,true)
  
- 	for name,player in pairs(tfm.get.room.playerList) do
+ for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.changePlayerSize(name, .1)
  	end
 end
 
-
 if random == 13 then
 
-	ui.addTextArea(1,"Ratones enormes",nil,50,50,0,0,0x000000,0xf2910a,1,true)
+	ui.addTextArea(1,"Ratones enormes",nil,50,50,0,0,0x010101,0xb01961,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.changePlayerSize(name, 5)
  	end
 end
-
 
 if random == 14 then
 
@@ -251,9 +269,9 @@ end
 
 if random == 15 then
 
-	ui.addTextArea(1,"Tamaño normal",nil,50,50,0,0,0x3e432e,0xa7d129,1,true)
+	ui.addTextArea(1,"Tamaño normal",nil,50,50,0,0,0x4b422d,0x6d6458,1,true)
  
- 	for name,player in pairs(tfm.get.room.playerList) do
+ for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.changePlayerSize(name, 1)
  	end
 end
@@ -262,14 +280,16 @@ if random == 16 then
 
 	ui.addTextArea(1,"Transformaciones",nil,50,50,0,0,0x000000,0x324650,1,true)
  
- 	for name,player in pairs(tfm.get.room.playerList) do
-		tfm.exec.giveTransformations(name)
+ for name,player in pairs(tfm.get.room.playerList) do
+		if not tfm.get.room.playerList[name].isShaman then
+			tfm.exec.giveTransformations(name)
+		end
 	end
 end
 
 if random == 17 then
 
-	ui.addTextArea(1,"Quitar queso",nil,50,50,0,0,0x202040,0xf0134d,1,true)
+	ui.addTextArea(1,"Quitar queso",nil,50,50,0,0,0x0a0a2b,0x470306,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.removeCheese(name)
@@ -278,7 +298,7 @@ end
 
 if random == 18 then
 
-	ui.addTextArea(1,"Resurrección",nil,50,50,0,0,0x202040,0xf9f7cf,1,true)
+	ui.addTextArea(1,"Resurrección",nil,50,50,0,0,0x43909c,0xffec8f,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.respawnPlayer(name)
@@ -301,21 +321,19 @@ if random == 20 then
 	tfm.exec.setWorldGravity (0, 0)
 end
 
-
 if random == 21 then
 
 	ui.addTextArea(1,"Gravedad fuerte",nil,50,50,0,0,0x212121,0xeeeeee,1,true)
   
-	tfm.exec.setWorldGravity (0, 50)
+		tfm.exec.setWorldGravity (0, 50)
 end
 
 if random == 22 then
 
-	ui.addTextArea(1,"Gravedad baja",nil,50,50,0,0,0x335d2d,0x7ea04d,1,true)
+	ui.addTextArea(1,"Gravedad baja",nil,50,50,0,0,0xf15025,0xa82f0f,1,true)
   
 	tfm.exec.setWorldGravity (0, 4)
 end
-
 
 if random == 23 then
 
@@ -336,10 +354,9 @@ if random == 24 then
 	tfm.exec.displayParticle(27, 146, 90)
 end
 
-
 if random == 25 then
 
-	ui.addTextArea(1,"Viento FUERTE",nil,50,50,0,0,0x1d242b,0x9d0b0b,1,true)
+	ui.addTextArea(1,"Viento FUERTE",nil,50,50,0,0,0x20208a,0x0011ff,1,true)
  
 	tfm.exec.setWorldGravity (30, 10)
 	tfm.exec.displayParticle(26, 200, 300)
@@ -374,8 +391,8 @@ if random == 27 then
 	for name,player in pairs(tfm.get.room.playerList) do
 		system.bindMouse(name)
 		function eventMouse(name, x, y)
-     			tfm.exec.movePlayer(name, x, y, false, 0, 1, false)
-    		end
+     		tfm.exec.movePlayer(name, x, y, false, 0, 1, false)
+    	end
 	end
 end
 
@@ -394,11 +411,11 @@ if random == 29 then
 	
 	for name,player in pairs(tfm.get.room.playerList) do
  		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 	   	tfm.exec.displayParticle(29, Xcoord, Ycoord)
 	   	tfm.exec.displayParticle(29, Xcoord, Ycoord, 1, 1)
 	   	tfm.exec.displayParticle(29, Xcoord, Ycoord, -1, -1)
-    		tfm.exec.playEmote (name, 0)
+    	tfm.exec.playEmote (name, 0)
  	end
 end
 
@@ -440,11 +457,11 @@ end
 
 if random == 34 then
 
-	ui.addTextArea(1,"Acciones al azar",nil,50,50,0,0,0x110133,0xfce38a,1,true)
+	ui.addTextArea(1,"Acciones al azar",nil,50,50,0,0,0xb272b8,0x1ea3f8,1,true)
 
 	for name,player in pairs(tfm.get.room.playerList) do
 		randomAni = math.random(0, 27)
-    		tfm.exec.playEmote (name, randomAni)
+    	tfm.exec.playEmote (name, randomAni)
  	end
 end
 
@@ -477,20 +494,20 @@ end
 
 if random == 38 then
 
-	ui.addTextArea(1,"Viento y gravedad normal",nil,50,50,0,0,0x000000, 0x222831,1,true)
+	ui.addTextArea(1,"Viento y gravedad normal",nil,50,50,0,0,0x453d42, 0xb7ab9f,1,true)
 	
 	tfm.exec.setWorldGravity (0, 10)
 end
 
 if random == 39 then
 
-	ui.addTextArea(1,"Particulas al azar",nil,50,50,0,0,0x000000, 0x222831,1,true)
+	ui.addTextArea(1,"Particulas al azar",nil,50,50,0,0,0x753c04, 0xb859de,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
-    		randomParticula = math.random(44)
-    		tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord, 1, 1)
+    	Ycoord = tfm.get.room.playerList[name].y
+    	randomParticula = math.random(44)
+    	tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord, 1, 1)
 	   	tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord, -1, -1)
 	   	tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord, 2, 1)
 	   	tfm.exec.displayParticle(randomParticula, Xcoord, Ycoord, -2, -1)
@@ -499,12 +516,12 @@ end
 
 if random == 40 then
 
-	ui.addTextArea(1,"Lluvia de ratones",nil,50,50,0,0,0x045791, 0x9ac6e6,1,true)
+	ui.addTextArea(1,"Lluvia de ratones",nil,50,50,0,0,0x045791, 0xc1d4ff,1,true)
  
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = math.random(800)
-    		Ycoord = 1
-    		tfm.exec.movePlayer ( name, Xcoord, Ycoord)				
+    	Ycoord = 1
+    	tfm.exec.movePlayer ( name, Xcoord, Ycoord)				
  	end
 end
 
@@ -515,7 +532,6 @@ if random == 41 then
 	newMap = math.random(#maps)
  	tfm.exec.newGame(maps[newMap])
 end
-
 
 if random == 42 then
 
@@ -530,7 +546,7 @@ if random == 43 then
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 	   	tfm.exec.explosion (Xcoord, Ycoord, 10000, 10000, false)
 	   	tfm.exec.displayParticle(3, Xcoord, Ycoord, 1, 1)
 	   	tfm.exec.displayParticle(3, Xcoord+1, Ycoord+1, -1, -1)
@@ -547,9 +563,9 @@ if random == 44 then
 	tfm.exec.addPhysicObject ( 8, 400, 100, {type = 8,
  		miceCollision = false,
  		groundCollision = false,
-    		width = 1300,
+    	width = 1300,
 		height = 1300,
-    		contactListener = true,
+    	contactListener = true,
 	   	foreground = true
 	})
 end             
@@ -565,11 +581,11 @@ end
 
 if random == 46 then
 
-	ui.addTextArea(1,"Lag",nil,50,50,0,0,0x3b0000,0x00163b,1,true)
+	ui.addTextArea(1,"Lag",nil,50,50,0,0,0x3b0000,0xc48001,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, Xcoord, Ycoord)
 	end
 end
@@ -592,8 +608,8 @@ if random == 48 then
  
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.playEmote (name, 3)
-    		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Xcoord = tfm.get.room.playerList[name].x
+    	Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.displayParticle(31, Xcoord, Ycoord)
 		tfm.exec.displayParticle(31, Xcoord, Ycoord, 1, 1)
 		tfm.exec.displayParticle(31, Xcoord, Ycoord, -1, -1)
@@ -605,13 +621,13 @@ if random == 49 then
 	ui.addTextArea(1,"Teletransportacion random",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
  
 	for name,player in pairs(tfm.get.room.playerList) do
-    		Xcoord = math.random(800)
+    	Xcoord = math.random(800)
 		Ycoord = math.random(400)
 		tfm.exec.movePlayer ( name, Xcoord, Ycoord)
-    		ratonX = tfm.get.room.playerList[name].x
-    		ratonY = tfm.get.room.playerList[name].y
+    	ratonX = tfm.get.room.playerList[name].x
+    	ratonY = tfm.get.room.playerList[name].y
 		tfm.exec.displayParticle(36, ratonX, ratonY)
-		tfm.exec.displayParticle(36, Xcoord, Ycoord)
+		tfm.exec.displayParticle(37, Xcoord, Ycoord)
 	end
 end
 
@@ -620,18 +636,18 @@ if random == 50 then
 	ui.addTextArea(1,"Empieza otra vez",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do 
-		tfm.exec.movePlayer ( name, inicioX, inicioY)  
+		tfm.exec.movePlayer (name, inicioX, inicioY)  
 	end 
 end
 
 if random == 51 then
 
-	ui.addTextArea(1,"Puntos al azar",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
+	ui.addTextArea(1,"Puntos al azar",nil,50,50,0,0,0x575e66,0x88958d,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 	   puntos = math.random(1000)
-    		tfm.exec.setPlayerScore(name, puntos)
-	end
+    tfm.exec.setPlayerScore(name, puntos)
+  end
 end
 	
 if random == 52 then
@@ -677,8 +693,8 @@ if random == 55 then
  	end
  	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
-    		Xrandom = math.random(800)
+    	Ycoord = tfm.get.room.playerList[name].y
+    	Xrandom = math.random(800)
 	   	Yrandom = math.random(400)
 	   	tfm.exec.displayParticle(22, Xcoord, Ycoord)
 	   	tfm.exec.displayParticle(22, Xcoord, Ycoord, 1, 1)
@@ -689,7 +705,7 @@ if random == 55 then
 	   	tfm.exec.displayParticle(1, Xrandom, Yrandom)
 	   	tfm.exec.displayParticle(1, Xrandom, Yrandom, 1, 1)
 	   	tfm.exec.displayParticle(1, Xrandom, Yrandom, -1, -1)
-    		tfm.exec.displayParticle(3, Xrandom, Yrandom)
+    	tfm.exec.displayParticle(3, Xrandom, Yrandom)
 	   	tfm.exec.displayParticle(3, Xrandom, Yrandom)
 	   	tfm.exec.displayParticle(3, Xrandom, Yrandom)
 	end
@@ -707,7 +723,6 @@ if random == 56 then
 	end
 end	
 
-
 if random == 57 then
 
 	ui.addTextArea(1,"Empujar",nil,50,50,0,0,0x625757,0xbcbab8,1,true)
@@ -715,13 +730,13 @@ if random == 57 then
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].movingRight then
 			Xcoord = tfm.get.room.playerList[name].x
-    			Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 			tfm.exec.movePlayer ( name, 0, 0,true,-60,0)
 		end
 
 		if tfm.get.room.playerList[name].movingLeft then
 			Xcoord = tfm.get.room.playerList[name].x
-    			Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 			tfm.exec.movePlayer ( name, 0, 0,true,60,0)
 		end
 	end
@@ -734,12 +749,12 @@ if random == 58 then
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].movingRight then
 			Xcoord = tfm.get.room.playerList[name].x
-    			Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 			tfm.exec.movePlayer (name,0,0,true,60,0)
 		end
 		if tfm.get.room.playerList[name].movingLeft then
 			Xcoord = tfm.get.room.playerList[name].x
-    			Ycoord = tfm.get.room.playerList[name].y
+    		Ycoord = tfm.get.room.playerList[name].y
 			tfm.exec.movePlayer (name,0,0,true,-60,0)
 		end
 	end
@@ -751,7 +766,7 @@ if random == 59 then
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, 0, 0,true,0,-50)
 	end
 end
@@ -762,7 +777,7 @@ if random == 60 then
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, 0, 0,true,0,-800)
 	end
 end
@@ -773,7 +788,7 @@ if random == 61 then
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.setPlayerScore(name, 0)
- 	end
+ end
 end
 
 if random == 62 then
@@ -792,18 +807,18 @@ end
 
 if random == 64 then
 
- 	ui.addTextArea(1,"Inundacion",nil,50,50,0,0,0x649ca5,0x8cb4bc,1,true)
+ ui.addTextArea(1,"Inundacion",nil,50,50,0,0,0x649ca5,0x8cb4bc,1,true)
 
 	tfm.exec.addPhysicObject (9, 400, 100, {type = 9,
 		miceCollision = false,
-    		width = 1300,
-    		height = 1300,
-    		contactListener = true,
+    	width = 1300,
+    	height = 1300,
+    	contactListener = true,
 	   	foreground = true
 	})
  	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 	   	tfm.exec.displayParticle(14, Xcoord, Ycoord)
  		tfm.exec.displayParticle(14, Xcoord, Ycoord, 1, 1)
  	end		
@@ -813,7 +828,7 @@ if random == 65 then
 
 	ui.addTextArea(1,"Defilante?",nil,50,50,0,0,0xb4732c,0xcb9847,1,true)
 
- 	temp = 0
+ temp = 0
 	while temp ~= 9 do
 		randomTipo = math.random(6)
 		Xcoord = math.random(800)
@@ -825,83 +840,82 @@ end
 
 if random == 66 then
 
- 	ui.addTextArea(1,"El suelo es acido",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
+ ui.addTextArea(1,"El suelo es acido",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
 	
 	tfm.exec.addPhysicObject (19, 450, 400, {type = 19,
 		miceCollision = true,
-    		width = 1300,
-    		height = 20,
-    		contactListener = true,
+    	width = 6000,
+    	height = 20,
+    	contactListener = true,
 	  	foreground = true
 	})
 end 
 
 if random == 67 then
 
- 	ui.addTextArea(1,"El suelo es lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
-
+ ui.addTextArea(1,"El suelo es lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
 	tfm.exec.addPhysicObject (10, 450, 400, {type = 3,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 20,
-    		contactListener = true,
-		foreground = true,
-		friction = 0.2,
-    		restitution = 20
+    miceCollision = true,
+    width = 6000,
+    height = 20,
+    contactListener = true,
+	   foreground = true,
+	   friction = 0.2,
+    restitution = 20
 	})
 end 
 
 if random == 68 then
 
- 	ui.addTextArea(1,"El suelo es trampolin",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
+ ui.addTextArea(1,"El suelo es trampolin",nil,50,50,0,0,0x40235b,0x644283,1,true)	
 	
 	tfm.exec.addPhysicObject (10, 450, 400, {type = 2,
 		miceCollision = true,
-    		width = 1300,
-    		height = 20,
-    		contactListener = true,
+    	width = 6000,
+    	height = 20,
+    	contactListener = true,
 	   	foreground = true,
 	   	friction = 0,
-    		restitution = 1.2
+    	restitution = 1.2
 	})
 end 
 
 if random == 69 then
 
- 	ui.addTextArea(1,"Caja trampolin",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
+ ui.addTextArea(1,"Caja trampolin",nil,50,50,0,0,0x40235b,0x644283,1,true)	
 	
 	tfm.exec.addPhysicObject (1, 450, 400, {type = 2,
 		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	   	friction = 0,
 	   	restitution = 1.2
 	})
 
 	tfm.exec.addPhysicObject (2, 450, 20, {type = 2,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	   	friction = 0,
 	   	restitution = 1.2
 	}) 
 
 	tfm.exec.addPhysicObject (3, 0, 0, {type = 2,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	   	friction = 0,
 	   	restitution = 1.2
 	})
 
 	tfm.exec.addPhysicObject (4, 800, 0, {type = 2,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	   	friction = 0,
 	   	restitution = 1.2
 	})
@@ -909,40 +923,40 @@ end
 
 if random == 70 then
 
- 	ui.addTextArea(1,"Caja de lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
+ ui.addTextArea(1,"Caja de lava",nil,50,50,0,0,0xff2500,0xea5c0f,1,true)	
 	
 	tfm.exec.addPhysicObject (1, 450, 400, {type = 3,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	   	friction = 0.2,
 	   	restitution = 20
 	})
 
 	tfm.exec.addPhysicObject (2, 450, 20, {type = 3,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	   	friction = 0.2,
 	   	restitution = 20
 	})
 
 	tfm.exec.addPhysicObject (3, 0, 0, {type = 3,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	   	friction = 0.2,
 	   	restitution = 20
 	})
 
 	tfm.exec.addPhysicObject (4, 800, 0, {type = 3,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	   	friction = 0.2,
 	   	restitution = 20
 	})
@@ -950,16 +964,16 @@ end
 
 if random == 71 then
 
- 	ui.addTextArea(1,"Niebla extrema",nil,50,50,0,0,0x92d9f2, 0xe3f6fd,1,true)
+ ui.addTextArea(1,"Niebla extrema",nil,50,50,0,0,0x5a9c9a, 0xe3f6fd,1,true)
 	
 	numero = 0
 	while numero ~= 13 do
 		tfm.exec.addPhysicObject (numero, 400, 100, {type = 8,
-    			miceCollision = false,
+    		miceCollision = false,
 	   		groundCollision = false,
-    			width = 1300,
-    			height = 1300,
-    			contactListener = true,
+    		width = 1300,
+    		height = 1300,
+    		contactListener = true,
 	   		foreground = true
 		})
 		numero = numero + 1
@@ -974,7 +988,6 @@ if random == 72 then
 	Ycoord = 0
 	while Ycoord ~= 400 do
 		tfm.exec.addBonus (5, Xcoord, Ycoord, 0, 0, true, nil)
-		tfm.exec.displayParticle(3, Xcoord, Ycoord)
 		Xcoord = Xcoord + 50
 		if Xcoord == 800 then
 			Ycoord = Ycoord + 50
@@ -985,34 +998,34 @@ end
 
 if random == 73 then
 
- 	ui.addTextArea(1,"Caja de acido",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
+ ui.addTextArea(1,"Caja de acido",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
 	
 	tfm.exec.addPhysicObject (1, 450, 400, {type = 19,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	})
 
 	tfm.exec.addPhysicObject (2, 450, 20, {type = 19,
-    		miceCollision = true,
-    		width = 1300,
-    		height = 13,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 1300,
+    	height = 13,
+    	contactListener = true,
 	}) 
 
 	tfm.exec.addPhysicObject (3, 0, 0, {type = 19,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	})
 
 	tfm.exec.addPhysicObject (4, 800, 0, {type = 19,
-    		miceCollision = true,
-    		width = 13,
-    		height = 1000,
-    		contactListener = true,
+    	miceCollision = true,
+    	width = 13,
+    	height = 1000,
+    	contactListener = true,
 	})
 end
 
@@ -1041,7 +1054,7 @@ if random == 75 then
 		end
 	end
 end
-		
+
 if random == 76 then
 
 	ui.addTextArea(1,"Suelo extra",nil,50,50,0,0,0x5b2e85, 0xffffff,1,true)
@@ -1073,7 +1086,7 @@ end
 
 if random == 78 then
 
-	ui.addTextArea(1,"Lluvia de pollos",nil,50,50,0,0,0x5b2e85, 0xffffff,1,true)
+	ui.addTextArea(1,"Lluvia de pollos",nil,50,50,0,0,0x800000, 0xecdcc5,1,true)
 	
 	coordenada = 0
 	while coordenada ~= 800 do
@@ -1084,7 +1097,7 @@ end
 
 if random == 79 then
 
-	ui.addTextArea(1,"Enciendan la luz",nil,50,50,0,0,0x00,0xffffff,1,true)
+	ui.addTextArea(1,"Enciendan la luz",nil,50,50,0,0,0x00,0x0a0a0a,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		tfm.exec.setPlayerNightMode(name)
@@ -1108,7 +1121,6 @@ if random == 81 then
 		tfm.exec.setPlayerGravityScale(name,0.2)
 	end
 end
-
 
 if random == 82 then
 
@@ -1136,8 +1148,8 @@ if random == 84 then
 	tfm.exec.newGame(bootcamps[newMap])
 	tfm.exec.setGameTime(300, true)
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.setShaman(name, false)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setShaman(name, false)
 			tfm.exec.setUIShamanName("")
  		end
 	end
@@ -1153,46 +1165,43 @@ end
 
 if random == 86 then
 
- 	ui.addTextArea(1,"Survivor",nil,50,50,0,0,0x1a1919,0x696868,1,true)
+	ui.addTextArea(1,"Survivor",nil,50,50,0,0,0x1a1919,0x696868,1,true)
 
 	newMap = math.random(#survivor)
 	tfm.exec.newGame(survivor[newMap])
 end
 
-
 if random == 87 then
 
 	ui.addTextArea(1,"UP",nil,50,50,0,0,0x125fb0,0xc3d5e8,1,true)
-	
+  
 	for name,player in pairs(tfm.get.room.playerList) do
 		local contador = 0
-                while contador ~= 9 do
+		while contador ~= 9 do
 			tfm.exec.attachBalloon(name)
 			contador = contador + 1
 		end
 	end
-end				
-	
+end
 
 if random == 88 then
 
 	ui.addTextArea(1,"Congelar chaman",nil,50,50,0,0,0x274fa1,0xb9e8ea,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.freezePlayer(name, true)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.freezePlayer(name, true)
  		end
 	end
 end
-
 
 if random == 89 then
 
 	ui.addTextArea(1,"RIP chaman",nil,50,50,0,0,0x1a1a46,0xbfbfe7,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.killPlayer(name)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.killPlayer(name)
  		end
 	end
 end
@@ -1202,8 +1211,8 @@ if random == 90 then
 	ui.addTextArea(1,"No chaman",nil,50,50,0,0,0x03518c,0xbfbfbf,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.setShaman(name, false)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setShaman(name, false)
 			tfm.exec.setUIShamanName("nadie")
  		end
 	end
@@ -1215,25 +1224,24 @@ if random == 91 then
 
 	for name, player in pairs(tfm.get.room.playerList) do
  		if tfm.get.room.playerList[name].isShaman then
-    			Xcoord = math.random(800)
+    		Xcoord = math.random(800)
 			Ycoord = math.random(400)
 			tfm.exec.movePlayer (name, Xcoord, Ycoord)
-    			ratonX = tfm.get.room.playerList[name].x
-    			ratonY = tfm.get.room.playerList[name].y
+    		ratonX = tfm.get.room.playerList[name].x
+    		ratonY = tfm.get.room.playerList[name].y
 			tfm.exec.displayParticle(36, ratonX, ratonY)
-			tfm.exec.displayParticle(36, Xcoord, Ycoord)
+			tfm.exec.displayParticle(37, Xcoord, Ycoord)
  		end
 	end
 end
-
 
 if random == 92 then
 
 	ui.addTextArea(1,"Chaman ciego",nil,50,50,0,0,0x000000,0x98e2eb,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.setPlayerNightMode(true,name)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setPlayerNightMode(true,name)
  		end
 	end
 end
@@ -1243,19 +1251,19 @@ if random == 93 then
 	ui.addTextArea(1,"Muerte al azar",nil,50,50,0,0,0x1a1a1a,0xb40d0d,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isFacingRight then
-    			tfm.exec.killPlayer(name)
+  	if tfm.get.room.playerList[name].isFacingRight then
+    		tfm.exec.killPlayer(name)
  		end
 	end
 end
 
 if random == 94 then
 
-	ui.addTextArea(1,"Tirar a todos abajo",nil,50,50,0,0,0x738581,0xafc7b2,1,true)
+	ui.addTextArea(1,"Tirar abajo",nil,50,50,0,0,0x738581,0xafc7b2,1,true)
 	
 	for name,player in pairs(tfm.get.room.playerList) do
 		Xcoord = tfm.get.room.playerList[name].x
-    		Ycoord = tfm.get.room.playerList[name].y
+    	Ycoord = tfm.get.room.playerList[name].y
 		tfm.exec.movePlayer ( name, 0, 0,true,0,60)
 	end
 end
@@ -1283,7 +1291,6 @@ if random == 95 then
 	end
 end 
 	
-
 if random == 96 then
 
  	ui.addTextArea(1,"Lluvia de acido",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)	
@@ -1293,10 +1300,10 @@ if random == 96 then
 	while contador ~= 15 do
 		Xcoord = math.random(800)
 		tfm.exec.addPhysicObject (contador, Xcoord, 1, {type = 19,
-    			miceCollision = true,
-    			width = 20,
-    			height = 20,
-    			contactListener = true,
+    		miceCollision = true,
+    		width = 20,
+    		height = 20,
+    		contactListener = true,
 			groundCollision = false,
 			foreground = true,
 			friction = 0.2,
@@ -1307,10 +1314,9 @@ if random == 96 then
 	end
 end 
 
-
 if random == 97 then
 
-	ui.addTextArea(1,"Ataque aereo",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"Ataque aereo",nil,50,50,0,0,0x474646,0xf0f0f0,1,true)
 
 	coord = 0
 	while coord ~= 400 do
@@ -1322,7 +1328,7 @@ end
 
 if random == 98 then
 
-	ui.addTextArea(1,"RATON",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"RATON",nil,50,50,0,0,0x432e1e,0x78583a,1,true)
 
 	Xcoord = math.random(800)
 	Ycoord = math.random(400)
@@ -1365,7 +1371,7 @@ end
 
 if random == 101 then
 
- ui.addTextArea(1,"Vampiros al azar",nil,50,50,0,0,0x2940d3,0x39a9cb,1,true)
+ ui.addTextArea(1,"Vampiros al azar",nil,50,50,0,0,0x2f000f,0x8b0202,1,true)
 
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
@@ -1376,7 +1382,7 @@ end
 
 if random == 102 then
 
- 	ui.addTextArea(1,"Quesos al azar",nil,50,50,0,0,0x77583b,0xffbd39,1,true)
+ 	ui.addTextArea(1,"Quesos al azar",nil,50,50,0,0,0xc9911c,0xfff76d,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
@@ -1387,12 +1393,12 @@ end
 
 if random == 103 then
 
-	ui.addTextArea(1,"Ganadores al azar",nil,50,50,0,0,0x14274e,0xe43a19,1,true)
+	ui.addTextArea(1,"Ganadores al azar",nil,50,50,0,0,0x14274e,0xa08864,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
 			tfm.exec.giveCheese(name)
-    			tfm.exec.playerVictory(name)
+    		tfm.exec.playerVictory(name)
 		end
  	end
 end
@@ -1410,7 +1416,7 @@ end
 
 if random == 105 then
 
-	ui.addTextArea(1,"Quitar queso al azar",nil,50,50,0,0,0x202040,0xf0134d,1,true)
+	ui.addTextArea(1,"Quitar queso al azar",nil,50,50,0,0,0x0a0a2b,0x470306,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
@@ -1432,7 +1438,7 @@ end
 
 if random == 107 then
 
-	ui.addTextArea(1,"Papaille",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"Papaille",nil,50,50,0,0,0x404749,0x91999a,1,true)
 
 	Xcoord = math.random(800)
 	Ycoord = math.random(400)
@@ -1443,12 +1449,12 @@ if random == 107 then
  		y = Ycoord,
  		lookAtPlayer = true,
 		female = true
-    	})
+     })
 end
 
 if random == 108 then
 
-	ui.addTextArea(1,"Elise",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"Elise",nil,50,50,0,0,0x2d1c08,0xcdc6c2,1,true)
 
 	Xcoord = math.random(800)
 	Ycoord = math.random(400)
@@ -1459,13 +1465,12 @@ if random == 108 then
  		y = Ycoord,
  		lookAtPlayer = true,
 		female = true
-     	})
+     })
 end
-
 
 if random == 109 then
 
-	ui.addTextArea(1,"Von Drekkemaus",nil,50,50,0,0,0x2ea634,0x9cf774,1,true)
+	ui.addTextArea(1,"Von Drekkemaus",nil,50,50,0,0,0x120d0d,0x695e54,1,true)
 
 	Xcoord = math.random(800)
 	Ycoord = math.random(400)
@@ -1475,12 +1480,12 @@ if random == 109 then
 		x = Xcoord,
  		y = Ycoord,
  		lookAtPlayer = true
-     	})
+     })
 end
 
 if random == 110 then
 
-	ui.addTextArea(1,"Quien esta ciego?",nil,50,50,0,0,0xd62b70,0x9efcb4,1,true)
+	ui.addTextArea(1,"Quien esta ciego?",nil,50,50,0,0,0x080707,0x141414,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
@@ -1491,7 +1496,7 @@ end
 
 if random == 111 then
 
-	ui.addTextArea(1,"Gordos al azar",nil,50,50,0,0,0xd62b70,0x9efcb4,1,true)
+	ui.addTextArea(1,"Gordos al azar",nil,50,50,0,0,0x3b1a00,0x855e40,1,true)
   
 	for name,player in pairs(tfm.get.room.playerList) do
 		if tfm.get.room.playerList[name].isFacingRight then
@@ -1499,18 +1504,18 @@ if random == 111 then
  		end
 	end
 end
-	
+
 if random == 112 then
 
 	ui.addTextArea(1,"Chaman pesado",nil,50,50,0,0,0x1a1a46,0xbfbfe7,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
-  		if tfm.get.room.playerList[name].isShaman then
-    			tfm.exec.setPlayerGravityScale(name,1.8)
+  	if tfm.get.room.playerList[name].isShaman then
+    		tfm.exec.setPlayerGravityScale(name,1.8)
  		end
 	end
 end
-	
+
 if random == 113 then
 
 	ui.addTextArea(1,"Los muertos ganan",nil,50,50,0,0,0x14274e,0xe43a19,1,true)
@@ -1519,7 +1524,7 @@ if random == 113 then
 		if tfm.get.room.playerList[name].isDead then
 			tfm.exec.respawnPlayer(name)
 			tfm.exec.giveCheese(name)
-    			tfm.exec.playerVictory(name)
+    		tfm.exec.playerVictory(name)
 		end
  	end
 end
@@ -1529,17 +1534,19 @@ if random == 114 then
 	ui.addTextArea(1,"Clones",nil,50,50,0,0,0x1a1a1a,0xb40d0d,1,true)
 
 	for name, player in pairs(tfm.get.room.playerList) do
+		if not tfm.get.room.playerList[name].isDead then
    		Xcoord = tfm.get.room.playerList[name].x
-		Ycoord = tfm.get.room.playerList[name].y
-		tfm.exec.addNPC(name, {title = (tfm.get.room.playerList[name].title), 
-		x = Xcoord,
-		y = Ycoord, 
-		look = (tfm.get.room.playerList[name].look), 
-		female = (tfm.get.room.playerList[name].gender), 
-		lookAtPlayer = true})	
+			Ycoord = tfm.get.room.playerList[name].y
+			tfm.exec.addNPC(name, {title = (tfm.get.room.playerList[name].title), 
+				x = Xcoord,
+				y = Ycoord, 
+				look = (tfm.get.room.playerList[name].look), 
+				female = (tfm.get.room.playerList[name].gender), 
+				lookAtPlayer = true})
+		end
 	end
 end
-		
+
 if random == 115 then
 
  	ui.addTextArea(1,"Casa de tribu",nil,50,50,0,0,0x1a1919,0x696868,1,true)
@@ -1548,6 +1555,34 @@ if random == 115 then
 	tfm.exec.newGame(tribu[newMap])
 end
 
-		
+if random == 116 then
+
+	ui.addTextArea(1,"Teletransportar adelante",nil,50,50,0,0,0x575e66,0xcadaed,1,true)
+ 
+	for name,player in pairs(tfm.get.room.playerList) do
+		Xcoord = tfm.get.room.playerList[name].x
+		Ycoord = tfm.get.room.playerList[name].y
+		if tfm.get.room.playerList[name].movingRight then
+    			tfm.exec.movePlayer (name, Xcoord + 80, Ycoord)	
+			tfm.exec.displayParticle(35, Xcoord, Ycoord)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,2)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,-2)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,0,1)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,0,-1)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord)
+ 		end
+		if tfm.get.room.playerList[name].movingLeft then
+    			tfm.exec.movePlayer (name, Xcoord - 80, Ycoord)
+			tfm.exec.displayParticle(35, Xcoord, Ycoord)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,2)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,-2)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,0,1)
+			tfm.exec.displayParticle(3, Xcoord, Ycoord,0,-1)
+		end
+	end
+end
+
+
 end
 end
