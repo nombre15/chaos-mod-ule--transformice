@@ -119,7 +119,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(116)
+random = math.random(117)
 
 --****EFECTOS****--
 
@@ -1570,6 +1570,18 @@ if random == 116 then
     			tfm.exec.movePlayer (name, Xcoord - 80, Ycoord)
 			tfm.exec.displayParticle(35, Xcoord, Ycoord)
 		end
+	end
+end
+
+
+if random == 117 then
+
+	ui.addTextArea(1,"Queso ganador",nil,50,50,0,0,0x876300,0xffd103,1,true)
+
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].hasCheese then
+			tfm.exec.playerVictory(name)
+ 		end
 	end
 end
 
