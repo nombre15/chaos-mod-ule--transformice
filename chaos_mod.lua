@@ -1332,7 +1332,7 @@ if random == 98 then
 
 	Xcoord = math.random(800)
 	Ycoord = math.random(400)
- 	titulo = math.random(537)
+ 	titulo = math.random(539)
  	tfm.exec.addNPC("RATON", { title = titulo,
  		look = "1;0,0,0,0,0,0,0,0,0", 
 		x = Xcoord,
