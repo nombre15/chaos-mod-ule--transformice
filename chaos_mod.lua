@@ -1553,6 +1553,9 @@ if random == 115 then
 
 	newMap = math.random(#tribu)
 	tfm.exec.newGame(tribu[newMap])
+	for name,player in pairs(tfm.get.room.playerList) do
+		tfm.exec.setGameTime(60, true)
+	end
 end
 
 if random == 116 then
