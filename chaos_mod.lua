@@ -119,7 +119,7 @@ end
 
 math.randomseed(os.time())
 
-random = math.random(117)
+random = math.random(122)
 
 --****EFECTOS****--
 
