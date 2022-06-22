@@ -1588,6 +1588,65 @@ if random == 117 then
 	end
 end
 
+if random == 118 then
+
+	ui.addTextArea(1,"Chaman gigante",nil,50,50,0,0,0x876300,0xffd103,1,true)
+
+	for name, player in pairs(tfm.get.room.playerList) do
+  		if tfm.get.room.playerList[name].isShaman then
+    			tfm.exec.changePlayerSize(name, 5)
+ 		end
+	end
+end
+
+if random == 119 then
+
+	ui.addTextArea(1,"Mini chaman",nil,50,50,0,0,0x876300,0xffd103,1,true)
+
+	for name, player in pairs(tfm.get.room.playerList) do
+  		if tfm.get.room.playerList[name].isShaman then
+    			tfm.exec.changePlayerSize(name, .1)
+ 		end
+	end
+end
+
+if random == 120 then
+
+	ui.addTextArea(1,"Ascendidos al cielo",nil,50,50,0,0,0x3b1a00,0x855e40,1,true)
+  
+	for name,player in pairs(tfm.get.room.playerList) do
+		if tfm.get.room.playerList[name].isFacingRight then
+			tfm.exec.setPlayerGravityScale(name,-1)
+ 		end
+	end
+end
+
+if random == 121 then
+
+ ui.addTextArea(1,"Suelo invisible",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
+	
+	tfm.exec.addPhysicObject (14, 450, 400, {type = 19,
+		miceCollision = true,
+    		width = 6000,
+    		height = 20,
+    		contactListener = true,
+	  	foreground = true
+	})
+end 
+
+
+if random == 122 then
+
+ ui.addTextArea(1,"Suelo de telarañas",nil,50,50,0,0,0x839D50,0x8FFE09,1,true)	
+	
+	tfm.exec.addPhysicObject (15, 450, 400, {type = 19,
+		miceCollision = true,
+    		width = 6000,
+    		height = 20,
+    		contactListener = true,
+	  	foreground = true
+	})
+end 
 
 end
 end
