@@ -1647,6 +1647,20 @@ if random == 122 then
 	  	foreground = true
 	})
 end 
+		
+if random == 123 then
+
+ ui.addTextArea(1,"1% posibilidad de morir",nil,50,50,0,0,0x75000c,0x261f1f,1,true)
+
+	local porcentaje = math.random(100)
+	
+	if porcentaje == 1 then
+		
+		for name,player in pairs(tfm.get.room.playerList) do
+			tfm.exec.killPlayer(name)
+ 		end
+	end
+end
 
 end
 end
