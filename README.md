@@ -1,3 +1,3 @@
 # chaos-mod(ule)-transformice
 
-no lo roben
+se sostiene con cinta y funciona de milagro no se lo roben
